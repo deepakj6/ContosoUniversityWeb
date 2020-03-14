@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>255dfb9d-d6c6-47e8-95b9-39b1e2aa49fb</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileContext>.</DockerfileContext>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.14" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.10" />
+    <PackageReference Include="MySql.Data" Version="6.9.12" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.1.2" />
+    <PackageReference Include="Steeltoe.CloudFoundry.Connector.EFCore" Version="2.1.1" />
+    <PackageReference Include="Steeltoe.CloudFoundry.ConnectorCore" Version="2.1.1" />
+    <PackageReference Include="Steeltoe.Extensions.Configuration.CloudFoundryCore" Version="2.1.1" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="connection" /></VisualStudio></ProjectExtensions>
+
+</Project>
