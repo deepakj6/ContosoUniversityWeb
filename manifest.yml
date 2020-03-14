@@ -1,0 +1,8 @@
+---
+applications:
+- name: contoso-web
+  path: bin/Release/netcoreapp2.1/publish
+  routes:
+  - route: contoso-web-patient-turtle.cfapps.io
+  services:
+  - schoolcontext

@@ -27,16 +27,14 @@ namespace ContosoUniversityWeb.Pages.Students
         public Student Student { get; set; }
 
         public async Task<IActionResult> OnPostAsync()
-        {
-            if (!ModelState.IsValid)
-            {
-                return Page();
+        {   
+            var emptyStudent = new Student();
+            if (await TryUpdateModelAsync<Student>(emptyStudent,"student", s => s.FirstMidName, s => s.LastName, s => s.EnrollmentDate))
+            {                _context.Students.Add(Student);
+                await _context.SaveChangesAsync();
+                return RedirectToPage("./Index");
             }
-
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }

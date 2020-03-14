@@ -38,19 +38,21 @@ namespace ContosoUniversityWeb
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-
+            #region Use this while pushing to PAS/PWS and comment the local connection string
             services.AddDbContext<SchoolContext>(options => options.UseMySql(Configuration));
+            #endregion
 
-            
 
-             //var conString = "Server=localhost;Database=contoso;User=root;";
-            
-/*            services.AddDbContext<SchoolContext>(options => options.UseMySql(
+            #region Use this for working on local machine with MYSQL locally - database name contoso
+/*            var conString = "Server=localhost;Database=contoso;User=root;";
+
+            services.AddDbContext<SchoolContext>(options => options.UseMySql(
                 conString,
                 mySqlOptions => mySqlOptions.ServerVersion(new Version(5, 7, 18), ServerType.MySql)
                 ));*/
-            
-        }        
+            #endregion
+
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

@@ -256,10 +256,10 @@ namespace ContosoUniversityWeb.Database
                 context.Database.EnsureCreated();
 
                 // Look for any students.
-                if (context.Students.Any())
+/*                if (context.Students.Any())
                 {
                     return;   // DB has been seeded
-                }
+                }*/
 
                 if (!context.Students.Any())
                 { 
@@ -281,7 +281,10 @@ namespace ContosoUniversityWeb.Database
                     context.SaveChanges();
                 }
 
-                var courses = new Course[]
+                if (!context.Courses.Any())
+                {
+
+                    var courses = new Course[]
                 {
                  new Course{CourseId=1050,Title="Chemistry",Credits=3},
                  new Course{CourseId=4022,Title="Microeconomics",Credits=3},
@@ -291,32 +294,49 @@ namespace ContosoUniversityWeb.Database
                  new Course{CourseId=2021,Title="Composition",Credits=3},
                  new Course{CourseId=2042,Title="Literature",Credits=4}
                 };
-                foreach (Course c in courses)
-                {
-                    context.Courses.Add(c);
+                    foreach (Course c in courses)
+                    {
+                        context.Courses.Add(c);
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
 
-                var enrollments = new Enrollment[]
+                if (!context.Enrollments.Any())
                 {
-                 new Enrollment{StudentId=1,CourseId=1050,Grade=Grade.A},
-                 new Enrollment{StudentId=1,CourseId=4022,Grade=Grade.C},
-                 new Enrollment{StudentId=1,CourseId=4041,Grade=Grade.B},
-                 new Enrollment{StudentId=2,CourseId=1045,Grade=Grade.B},
+
+                    var enrollments = new Enrollment[]
+                    {
+                 //new Enrollment{StudentId=1,CourseId=1050,Grade=Grade.A},
+                 //new Enrollment{StudentId=1,CourseId=4022,Grade=Grade.C},
+                 //new Enrollment{StudentId=1,CourseId=4041,Grade=Grade.B},
+                 //new Enrollment{StudentId=2,CourseId=1045,Grade=Grade.B},
+                 //new Enrollment{StudentId=2,CourseId=3141,Grade=Grade.F},
+                 //new Enrollment{StudentId=2,CourseId=2021,Grade=Grade.F},
+                 //new Enrollment{StudentId=3,CourseId=1050},
+                 //new Enrollment{StudentId=4,CourseId=1050},
+                 //new Enrollment{StudentId=4,CourseId=4022,Grade=Grade.F},
+                 //new Enrollment{StudentId=5,CourseId=4041,Grade=Grade.C},
+                 //new Enrollment{StudentId=6,CourseId=1045},
+                 //new Enrollment{StudentId=7,CourseId=3141,Grade=Grade.A},
+                 new Enrollment{StudentId=2,CourseId=1050,Grade=Grade.A},
+                 new Enrollment{StudentId=2,CourseId=4022,Grade=Grade.C},
+                 new Enrollment{StudentId=72,CourseId=4041,Grade=Grade.B},
+                 new Enrollment{StudentId=12,CourseId=1045,Grade=Grade.B},
                  new Enrollment{StudentId=2,CourseId=3141,Grade=Grade.F},
-                 new Enrollment{StudentId=2,CourseId=2021,Grade=Grade.F},
-                 new Enrollment{StudentId=3,CourseId=1050},
-                 new Enrollment{StudentId=4,CourseId=1050},
-                 new Enrollment{StudentId=4,CourseId=4022,Grade=Grade.F},
-                 new Enrollment{StudentId=5,CourseId=4041,Grade=Grade.C},
-                 new Enrollment{StudentId=6,CourseId=1045},
-                 new Enrollment{StudentId=7,CourseId=3141,Grade=Grade.A},
-                };
-                foreach (Enrollment e in enrollments)
-                {
-                    context.Enrollments.Add(e);
+                 new Enrollment{StudentId=12,CourseId=2021,Grade=Grade.F},
+                 new Enrollment{StudentId=22,CourseId=1050},
+                 new Enrollment{StudentId=32,CourseId=1050},
+                 new Enrollment{StudentId=32,CourseId=4022,Grade=Grade.F},
+                 new Enrollment{StudentId=42,CourseId=4041,Grade=Grade.C},
+                 new Enrollment{StudentId=52,CourseId=1045},
+                 new Enrollment{StudentId=62,CourseId=3141,Grade=Grade.A},
+                    };
+                    foreach (Enrollment e in enrollments)
+                    {
+                        context.Enrollments.Add(e);
+                    }
+                    context.SaveChanges();
                 }
-                context.SaveChanges();
             }
             catch (Exception ex)
             {
